@@ -4,6 +4,10 @@
 \usepackage[svgnames]{xcolor} % Sử dụng thêm màumàu
 \usepackage[a4paper, left=2cm, right=2cm, top=1cm, bottom=2.5cm, footskip=1.2cm]{geometry}  % Chỉnh kích thước tài liệu
 
+\usepackage{enumitem}
+
+\usepackage[hidelinks]{hyperref}
+
 \usepackage{graphicx}
 \graphicspath{ {./images/} }
 
@@ -65,10 +69,52 @@ và hỗ trợ quá trình tuyển dụng dựa trên dữ liệu minh bạch v�
   \textit{Sơ đồ hoạt động của hệ thống phiên bản 1.0}
 \end{center}
 
-\section*{Use cases}
+\begin{enumerate}[label=\textbf{\Roman*.}]
+  \item \textbf{Các thành phần chính:} \par
+  - IPFS (InterPlanetary File System): hệ thống phân tán ngang hàng để lưu trữ \textit{thử thách} (Challenge) và \textit{giải pháp} (Solution) của nó. \par
+  - Blockchain: quản lý các dữ liệu quan trọng trên chuỗi như danh sách thử thách, danh sách giải pháp, điểm số, quyền truy cập\dots
+  \item \textbf{Các luồng hoạt động chính:} \par
+  \begin{enumerate}[label=\textbf{\arabic*.}]
+    \item \textbf{Tạo thử thách:} \par
+    - Người đóng góp (Contributor) tạo và đăng tải các thử thách thuộc nhiều lĩnh vực khác nhau (ví dụ: Thuật toán, Phát triển phần mềm\dots) lên hệ thống thông qua IPFS. \par
+    - Cộng đồng (Community) đánh giá và bỏ phiếu cho các thử thách dựa trên chất lượng và mức độ hấp dẫn. 
+    Những thử thách nhận được nhiều phiếu bầu sẽ tự động được đề xuất cho người tham gia hệ thống. \par
+    \item \textbf{Tham gia thử thách và đánh giá:} \par
+    - Người dùng (Bob) trả một khoản token nhất định cho Contributor để tham gia thử thách \par
+    - Bob đưa ra giải pháp cho thử thách và thiết lập một phiên đánh giá bao gồm phần thưởng cùng số lượng tối đa Người đánh giá (Reviewer) có thể tham gia chấm điểm. \par
+    - Reviewer có thể yêu cầu tham gia vào phiên đánh giá. Sau khi hoàn thành đánh giá, mỗi Reviewer sẽ nộp điểm số kèm theo một khoản token đặt cược. \par
+    - Smart Contract thu thập tất cả điểm số từ Reviewer, áp dụng thuật toán tính điểm để xác định tổng điểm cuối cùng. 
+    Những Reviewer có điểm số gần với kết quả chính xác nhất của hệ thống sẽ nhận thêm token. \par
+    - Smart Contract sau đó cập nhật giải pháp này lên cả IPFS và Blockchain để đảm bảo tính minh bạch và không thể chỉnh sửa. \par
+    \item \textbf{Truy vấn dữ liệu:} \par
+    - Người phỏng vấn (Interviewer) yêu cầu truy vấn dữ liệu của Bob thông qua Smart Contract. \par
+    - Bob chấp nhận yêu cầu và tạo phiên chia sẻ khóa để Interviewer xem dữ liệu.
+  \end{enumerate}
+\end{enumerate}
+
+% \section*{Use cases}
 
 \section*{Kế hoạch triển khai}
+- Front-end: NextJS, TailwindCSS...
+\vspace{4pt}
+
+- Back-end: Solidity (Etherium), Hardhat...
+\vspace{4pt}
+
+- Báo cáo và các dạng tài liệu liên quan: LaTex
 
 \section*{Tài liệu tham khảo}
+WebOfTrustInfo - \href{https://github.com/WebOfTrustInfo/rwot9-prague/blob/master/final-documents/reputation-interpretation.pdf}{Reputation Interpretation}.
+\vspace{4pt}
+
+WebOfTrustInfo - \href{https://github.com/WebOfTrustInfo/rwot4-paris/blob/master/final-documents/reputation-design.pdf}{Design Considerations for Decentralized Reputation Systems}.
+\vspace{4pt}
+
+WebOfTrustInfo - \href{https://github.com/WebOfTrustInfo/rwot3-sf/blob/master/final-documents/reputation-toolkit.pdf}{Portable Repution Toolkit Use Cases}.
+
+\vfill 
+\begin{center}
+    \textbf{\Huge HẾT}
+\end{center}
 
 \end{document}
