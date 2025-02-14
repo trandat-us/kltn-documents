@@ -65,7 +65,7 @@ và hỗ trợ quá trình tuyển dụng dựa trên dữ liệu minh bạch v�
 \section*{Kiến trúc hệ thống}
 
 \begin{center}
-  \includegraphics[width=0.97\textwidth]{prototype-v1.0.png}
+  \includegraphics[width=0.97\textwidth]{prototype-v1.0-1.drawio.png}
   \textit{Sơ đồ hoạt động của hệ thống phiên bản 1.0}
 \end{center}
 
@@ -76,21 +76,28 @@ và hỗ trợ quá trình tuyển dụng dựa trên dữ liệu minh bạch v�
   \item \textbf{Các luồng hoạt động chính:} \par
   \begin{enumerate}[label=\textbf{\arabic*.}]
     \item \textbf{Tạo thử thách:} \par
-    - Người đóng góp (Contributor) tạo và đăng tải các thử thách thuộc nhiều lĩnh vực khác nhau (ví dụ: Thuật toán, Phát triển phần mềm\dots) lên hệ thống thông qua IPFS. \par
-    - Cộng đồng (Community) đánh giá và bỏ phiếu cho các thử thách dựa trên chất lượng và mức độ hấp dẫn. 
+    - Người đóng góp (Contributor) tạo và đăng tải các thử thách lên hệ thống. Nội dung của thử thách được lưu trữ và chia sẽ thông qua giao thức IPFS. \par
+    - Mỗi thử thách thuộc một trong các phân loại: Thuật toán (Algorithm), Phát triển phần mềm (Software Development), Thiết kế hệ thống (System Design), DevOps, An toàn thông tin (Cyber Security), Kỹ năng mềm (Soft skills), v.v \par
+    - Cộng đồng (Community) đánh giá và bỏ phiếu cho các thử thách dựa trên chất lượng và mức độ phù hợp. 
     Những thử thách nhận được nhiều phiếu bầu sẽ tự động được đề xuất cho người tham gia hệ thống. \par
     \item \textbf{Tham gia thử thách và đánh giá:} \par
-    - Người dùng (Bob) trả một khoản token nhất định cho Contributor để tham gia thử thách \par
-    - Bob đưa ra giải pháp cho thử thách và thiết lập một phiên đánh giá bao gồm phần thưởng cùng số lượng tối đa Người đánh giá (Reviewer) có thể tham gia chấm điểm. \par
+    - Người dùng (Bob) trả một khoản token nhất định cho Contributor để tham gia thử thách. \par
+    - Bob đưa ra giải pháp cho thử thách và thiết lập một phiên đánh giá bao gồm phần thưởng cùng số lượng tối đa Người đánh giá (Reviewer) có thể tham gia chấm điểm. Giải pháp của Bob được lưu trữ trong IPFS dưới dạng mã hóa. Bất kì ai nếu muốn đọc giải pháp của Bob đều cần phải có sự đồng ý của Bob. \par
     - Reviewer có thể yêu cầu tham gia vào phiên đánh giá. Sau khi hoàn thành đánh giá, mỗi Reviewer sẽ nộp điểm số kèm theo một khoản token đặt cược. \par
-    - Smart Contract thu thập tất cả điểm số từ Reviewer, áp dụng thuật toán tính điểm để xác định tổng điểm cuối cùng. 
-    Những Reviewer có điểm số gần với kết quả chính xác nhất của hệ thống sẽ nhận thêm token. \par
-    - Smart Contract sau đó cập nhật giải pháp này lên cả IPFS và Blockchain để đảm bảo tính minh bạch và không thể chỉnh sửa. \par
-    \item \textbf{Truy vấn dữ liệu:} \par
-    - Người phỏng vấn (Interviewer) yêu cầu truy vấn dữ liệu của Bob thông qua Smart Contract. \par
+    - Smart Contract thu thập tất cả điểm số từ Reviewer, áp dụng thuật toán tính điểm để xác định số điểm cuối cùng. \par
+    - Những Reviewer có điểm số gần với kết quả chính xác nhất sẽ nhận thêm token. Số lượng token đặt cược ban đầu càng lớn thì sẽ nhận lại càng nhiều. Những reviewer có điểm số càng lệch xa với kết quả sẽ bị phạt càng nhiều token dựa trên số token ban đầu đã đặt cược. \par  
+    - Smart Contract sau đó cập nhật kết quả lên Blockchain để đảm bảo tính minh bạch và không thể chỉnh sửa. \par
+    \item \textbf{Chỉnh sửa giải pháp và cải thiện điểm:} \par
+    - Người dùng (Bob) có thể cái thiện điểm bằng một trong hai cách: tạo thêm một phiên đánh giá cho giải pháp hiện tại hoặc cập nhật giải pháp và tạo một phiên đánh giá mới. \par
+    - Quy trình tạo phiên đánh giá tương tự như ở mục 3.
+    \item \textbf{Truy cập dữ liệu:} \par
+    - Người phỏng vấn (Interviewer) có thể xem được những thử thách Bob đã tham gia, lịch sử số điểm đạt được tương ứng với giải pháp mà Bob đưa ra. \par
+    - Vì nội dung chi tiết của các giải pháp đều được mã hóa, người phỏng vấn (Interviewer) cần yêu cầu quyền truy cập dữ liệu từ Bob thông qua Smart Contract. \par
     - Bob chấp nhận yêu cầu và tạo phiên chia sẻ khóa để Interviewer xem dữ liệu.
   \end{enumerate}
 \end{enumerate}
+
+% \section*{Use cases}
 
 \section*{Kế hoạch triển khai}
 - Front-end: NextJS, TailwindCSS...
